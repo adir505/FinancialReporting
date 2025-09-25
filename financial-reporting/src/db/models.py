@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, Text, Date, Numeric, BigInteger, JSON, TIMESTAMP, UniqueConstraint, ForeignKey
+from sqlalchemy import (Column, Integer, Text, Date, Numeric, BigInteger,
+                        JSON, TIMESTAMP, UniqueConstraint, ForeignKey)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
 
