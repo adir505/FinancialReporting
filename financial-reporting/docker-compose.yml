@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: financials
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:example@db:5432/financials
+      RAW_DATA_DIR: /data/raw
+      REPORT_DIR: /data/reports
+    volumes:
+      - ./data/raw:/data/raw
+      - ./data/reports:/data/reports
+      - ./logs:/app/logs
+    command: ["python", "-m", "src.cli"]
+    ports:
+      - "8000:8000"
+volumes:
+  db_data:

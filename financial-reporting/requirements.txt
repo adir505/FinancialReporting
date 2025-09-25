@@ -1,0 +1,8 @@
+pandas
+sqlalchemy
+psycopg2-binary
+yfinance
+openpyxl
+xlsxwriter
+python-dateutil
+requests
